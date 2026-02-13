@@ -2,7 +2,7 @@
 
 A hands-on tutorial on designing, training, and evaluating probabilistic forecasts of dengue incidence using the [DARTS](https://unit8co.github.io/darts/) library and Temporal Convolutional Network (TCN) models. Students work through data retrieval, cleaning, univariate and covariate-based forecasting for Rio de Janeiro, and visualisation and evaluation of forecast outputs.
 
-**Authors:** Ciara Judge, Cathal Mills, Moritz Kraemer  
+**Authors:** Ciara Judge, Cathal Mills, Moritz Kraemer; February 2026
 
 ---
 
