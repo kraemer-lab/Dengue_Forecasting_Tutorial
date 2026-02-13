@@ -70,7 +70,10 @@ By the end of the tutorial you will be able to:
 ## How to run the tutorial
 
 ### 1. Open the notebook in Google Colab
+- Open [this notebook in google colab](https://colab.research.google.com/drive/1vGGYLWkG1_anx2LO7dvbXOccOtiUrmZC?usp=sharing).
+- Go to *File → Save a Copy in Google Drive* and use this copy for the tutorial.
 
+***OR***
 - Go to [Google Colab](https://colab.research.google.com/).
 - Upload or open [`ML_forecasting_tutorial.ipynb`](ML_forecasting_tutorial.ipynb) (e.g. *File → Upload notebook* or clone this repo and open the file from Colab).
 
