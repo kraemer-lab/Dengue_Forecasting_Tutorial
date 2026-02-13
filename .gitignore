@@ -6,6 +6,10 @@ __pycache__/
 # C extensions
 *.so
 
+# Custom
+data/BRA-seasonal_forecast_monthly.zs.nc  
+#too big for github
+
 # Distribution / packaging
 .Python
 build/

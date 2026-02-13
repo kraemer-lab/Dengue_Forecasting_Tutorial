@@ -1,107 +1,24 @@
-# Dengue Hackathon available datasets
+# Dengue forecasting tutorial — dataset descriptors and inventory
 
-Datasets are either in
-CSV or NetCDF format (.nc).  Unless otherwise mentioned, all NetCDF files were produced by resampling the
-cropped source global raster to the population raster for a particular (iso3,
-year) combination using bilinear resampling, and the population weighted mean
-was used as zonal statistics to obtain aggregated values to administrative
-boundaries. Datasets that only valid for land (vegetation, GDP, access to
-water) use sparse bilinear resampling unless otherwise stated.
+This folder contains the **epidemiological training data** for the tutorial ([`BRA_epi_training.csv`](BRA_epi_training.csv)) and the following **descriptors** for all covariate datasets (climate, socioeconomic, demographic) used in the practical. The **covariate NetCDF files** are not all stored in this repository: one dataset is too large to host here, and for the tutorial students obtain the data (including that file) from the **Global.health data portal**: [https://sim-dev-data.covid-19.global.health/data-downloads](https://sim-dev-data.covid-19.global.health/data-downloads). Sign in with a Google account; access may need to be granted by an admin. Brazil files use the prefix `BRA`.
 
-Each dataset is licensed separately, using [SPDX](https://spdx.org/licenses/)
-license specifiers, e.g. `CC-BY-4.0` refers to [Creative Commons Attribution
-4.0 International](https://spdx.org/licenses/CC-BY-4.0.html). Citation
-guidelines for each dataset are also provided.
+---
 
-## External datasets
+Covariate data are in **NetCDF** format (`.nc`); the epidemiological data are **CSV**. Each dataset has its own license and citation (given below). For the tutorial you use Brazil files only; on the Global.health portal they have the prefix `BRA` (e.g. `BRA-reanalysis_monthly.zs.nc`).
 
-### Geometry
+NetCDF files contain variables indexed by *time* (usually monthly) and *region* (administrative unit ID). Static datasets have only *region*. The sections below describe each dataset: what it contains, units, and how to cite it.
 
-Geometry data is available in the [`data/geometry`](../data/geometry) folder of this repository.
-Certain files are not re-distributed here due to licensing issues or large file
-sizes. Use `./src/geometry/all.sh` to download.
+## Inventory (Brazil tutorial)
 
-The `region` coordinate in the zonalstats files (.zs.nc) correspond to a
-**unique ID column** from shapefiles in this folder. The configuration
-of shapefiles and unique ID columns is specified in
-[`geoglue-config.toml`](../geoglue-config.toml).
+Non-epidemiological datasets you may use for the Brazil tutorial (download from Global.health; filename pattern `BRA-*.zs.nc` or `BRA_*.zs.nc`):
 
-### Population data
-
-Population raster data is generally not required unless you want to reproduce the
-zonal statistics files. To get WorldPop data, use `./src/raw/worldpop.sh`
-
-## NetCDF files
-
-Files: `ISO3-DATASET.zs.nc` (`.zs` denotes a file with zonal statistics)
-
-NetCDF (Network Common Data Form) is a widely used, self-describing file format
-designed to store multidimensional scientific data. It is especially common in
-climate, hydrology, and geospatial workflows because it efficiently stores
-arrays with labeled dimensions, coordinates, and metadata.
-
-Each .nc file contains data for either one or multiple variables indexed by two
-dimensions:
-- *time*: a sequence of timestamps, usually monthly, but can be yearly or every
-  10-day for certain drought indices
-- *region* — a unique identifier for an administrative unit
-
-Static datasets only have one dimension *region*.
-
-Global static datasets that are not country specific only have one dimension *time*.
-
-The `geoglue_config` attribute for each variable records provenance information
-describing how the file was generated, recording the input files, resampling
-steps and zonal statistics operations.
-
-Examples of loading the data and processing to use for forecasting
-(in Python and R) can be found at
-https://github.com/cathalmills/hackathon_example
-
-## Inventory
-
-Here is a list of all non-epidemiological datasets included in the data portal.
-Note that certain files can contain multiple variables, these are described in
-the next section, with the section header being the (partial) name of the file.
-Country-level datasets (anything marked not global) have the filename form
-`ISO3-*-dataset.zs.nc`. This text is generated using the
-[`src/inventory.py`](../src/inventory.py) script. A few datasets do not have
-data for all the countries listed above.
-
-```shell
- 1. ccvi                       BRA CRI DOM IDN LKA MEX PER PRI SGP SLV THA
- 2. gdp_pc                     BLM BRA BRB CRI DOM GRD IDN LKA MAF MEX PER PRI SGP SLV THA
- 3. population                 BLM BRA BRB CRI DOM GRD IDN LKA MAF MEX PER PRI SGP SLV THA
- 4. reanalysis_monthly         BLM BRA BRB CRI DOM GRD IDN LKA MAF MEX PER PRI SGP SLV THA
- 5. seasonal_forecast_monthly  BLM BRA BRB CRI DOM GRD IDN LKA MAF MEX PER PRI SGP SLV THA
- 6. spa01                      BLM BRA BRB CRI DOM GRD IDN LKA MAF MEX PER PRI SGP SLV THA
- 7. spa03                      BLM BRA BRB CRI DOM GRD IDN LKA MAF MEX PER PRI SGP SLV THA
- 8. spa06                      BLM BRA BRB CRI DOM GRD IDN LKA MAF MEX PER PRI SGP SLV THA
- 9. spa12                      BLM BRA BRB CRI DOM GRD IDN LKA MAF MEX PER PRI SGP SLV THA
-10. spe01                      BLM BRA BRB CRI DOM GRD IDN LKA MAF MEX PER PRI SGP SLV THA
-11. spe03                      BLM BRA BRB CRI DOM GRD IDN LKA MAF MEX PER PRI SGP SLV THA
-12. spe06                      BLM BRA BRB CRI DOM GRD IDN LKA MAF MEX PER PRI SGP SLV THA
-13. spe12                      BLM BRA BRB CRI DOM GRD IDN LKA MAF MEX PER PRI SGP SLV THA
-14. surv_wmean                 BLM BRA BRB CRI DOM GRD IDN LKA MAF MEX PER PRI SGP SLV THA
-15. swvl1                      BLM BRA BRB CRI DOM GRD IDN LKA MAF MEX PER PRI SGP SLV THA
-16. urban                      BLM BRA BRB CRI DOM GRD IDN LKA MAF MEX PER PRI SGP SLV THA
-17. w_piped                    BRA DOM IDN LKA MEX PER SLV THA
-18. elninossta                 global
-19. pandemic_phase             global
-```
+- ccvi, gdp_pc, population, reanalysis_monthly, seasonal_forecast_monthly  
+- spa01, spa03, spa06, spa12 (Standardized Precipitation Index)  
+- spe01, spe03, spe06, spe12 (Standardized Precipitation-Evapotranspiration Index)  
+- surv_wmean, swvl1, urban, w_piped  
 
 
 ## Datasets
-
-### elninossta
-
-- *Dataset*: El-Nino Sea Surface Temperature anomaly
-- *Temporal resolution*: monthly
-- *Temporal extent*: 2015-2025
-- *Coordinates*: time
-- *License*: public domain
-
-Variable: ssta (K)
 
 ### reanalysis_monthly
 
@@ -166,7 +83,7 @@ If using this dataset, please cite:
 
 Variable: spa01 (unitless)
 
-*Dataset notes*: Interpolation for NA values was performed with manual checks to ensure interpolation only covered a small region for the countries under consideration.
+*Dataset notes*: Interpolation for NA values was performed with manual checks to ensure interpolation only covered a small region.
 
 If using this dataset, please cite:
 
@@ -189,7 +106,7 @@ The following reference must be mentioned as well:
 
 Variable: spa03 (unitless)
 
-*Dataset notes*: Interpolation for NA values was performed with manual checks to ensure interpolation only covered a small region for the countries under consideration.
+*Dataset notes*: Interpolation for NA values was performed with manual checks to ensure interpolation only covered a small region.
 
 If using this dataset, please cite:
 
@@ -212,7 +129,7 @@ The following reference must be mentioned as well:
 
 Variable: spa06 (unitless)
 
-*Dataset notes*: Interpolation for NA values was performed with manual checks to ensure interpolation only covered a small region for the countries under consideration.
+*Dataset notes*: Interpolation for NA values was performed with manual checks to ensure interpolation only covered a small region.
 
 If using this dataset, please cite:
 
@@ -235,7 +152,7 @@ The following reference must be mentioned as well:
 
 Variable: spa12 (unitless)
 
-*Dataset notes*: Interpolation for NA values was performed with manual checks to ensure interpolation only covered a small region for the countries under consideration.
+*Dataset notes*: Interpolation for NA values was performed with manual checks to ensure interpolation only covered a small region.
 
 If using this dataset, please cite:
 
@@ -259,7 +176,7 @@ The following reference must be mentioned as well:
 
 Variable: spe01 (unitless)
 
-*Dataset notes*: Interpolation for NA values was performed with manual checks to ensure interpolation only covered a small region for the countries under consideration. Data was [clipped to -3.09 to 3.09](https://github.com/monocongo/climate_indices/blob/master/src/climate_indices/indices.py), where 90% of SPEI values lie, to avoid `inf` propagation.
+*Dataset notes*: Interpolation for NA values was performed with manual checks to ensure interpolation only covered a small region. Data was [clipped to -3.09 to 3.09](https://github.com/monocongo/climate_indices/blob/master/src/climate_indices/indices.py), where 90% of SPEI values lie, to avoid `inf` propagation.
 
 If using this dataset, please cite:
 
@@ -288,7 +205,7 @@ The following references must be mentioned as well:
 
 Variable: spe03 (unitless)
 
-*Dataset notes*: Interpolation for NA values was performed with manual checks to ensure interpolation only covered a small region for the countries under consideration. Data was [clipped to -3.09 to 3.09](https://github.com/monocongo/climate_indices/blob/master/src/climate_indices/indices.py), where 90% of SPEI values lie, to avoid `inf` propagation.
+*Dataset notes*: Interpolation for NA values was performed with manual checks to ensure interpolation only covered a small region. Data was [clipped to -3.09 to 3.09](https://github.com/monocongo/climate_indices/blob/master/src/climate_indices/indices.py), where 90% of SPEI values lie, to avoid `inf` propagation.
 
 If using this dataset, please cite:
 
@@ -317,7 +234,7 @@ The following references must be mentioned as well:
 
 Variable: spe06 (unitless)
 
-*Dataset notes*: Interpolation for NA values was performed with manual checks to ensure interpolation only covered a small region for the countries under consideration. Data was [clipped to -3.09 to 3.09](https://github.com/monocongo/climate_indices/blob/master/src/climate_indices/indices.py), where 90% of SPEI values lie, to avoid `inf` propagation.
+*Dataset notes*: Interpolation for NA values was performed with manual checks to ensure interpolation only covered a small region. Data was [clipped to -3.09 to 3.09](https://github.com/monocongo/climate_indices/blob/master/src/climate_indices/indices.py), where 90% of SPEI values lie, to avoid `inf` propagation.
 
 If using this dataset, please cite:
 
@@ -346,7 +263,7 @@ The following references must be mentioned as well:
 
 Variable: spe12 (unitless)
 
-*Dataset notes*: Interpolation for NA values was performed with manual checks to ensure interpolation only covered a small region for the countries under consideration. Data was [clipped to -3.09 to 3.09](https://github.com/monocongo/climate_indices/blob/master/src/climate_indices/indices.py), where 90% of SPEI values lie, to avoid `inf` propagation.
+*Dataset notes*: Interpolation for NA values was performed with manual checks to ensure interpolation only covered a small region. Data was [clipped to -3.09 to 3.09](https://github.com/monocongo/climate_indices/blob/master/src/climate_indices/indices.py), where 90% of SPEI values lie, to avoid `inf` propagation.
 
 If using this dataset, please cite:
 
@@ -386,20 +303,6 @@ If using this dataset, please cite:
 > (C3S) Climate Data Store (CDS), DOI: 10.24381/cds.f17050d7 (Accessed on
 > 2025-11-18)
 
-### pandemic_phase
-
-- *Dataset*: Pandemic Phase Category
-- *Temporal resolution*: monthly
-- *Temporal extent*: 2015-2025
-- *Coordinates*: time
-- *No spatial extent*, this is global data
-
-Variables: pandemic_phase (categorical):
-
-0. pre_pandemic
-1. pandemic_acute
-2. pandemic_transition
-3. post_pandemic
 
 ### population
 
