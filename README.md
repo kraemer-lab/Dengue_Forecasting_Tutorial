@@ -44,7 +44,7 @@ By the end of the tutorial you will be able to:
    - Obtaining data from Global.health and loading it in Colab.
    - If data download is taking too long, [make a copy of this folder on your own drive](https://drive.google.com/drive/folders/1u5CNh1SnfsVT2bmjjRqR8jaVqufaIZiI?usp=drive_link).
    - Merging the epidemiological target with historical covariates and seasonal forecasts into a single table.  
-   - Filtering to Rio de Janeiro and exploring the series.
+   - Filtering to Rio de Janeiro and exploring the series. You can look up other [municipality codes from here](https://www.ibge.gov.br/en/cities-and-states/).
 
 2. **Model: TCN (6‑month horizon, univariate)**  
    - Building training/test splits.  
