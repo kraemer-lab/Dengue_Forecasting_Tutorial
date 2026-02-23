@@ -6,6 +6,11 @@ A hands-on tutorial on designing, training, and evaluating probabilistic forecas
 
 ---
 
+## Important note for Y3 MBiol tudents
+The [tutorial solutions are now available here](https://colab.research.google.com/drive/1W8wPBJrL-s2ZfyqqpzTL338JhGKVaQuu?usp=sharing). We advise that you consult these solutions as they will help you to complete the assignment.
+
+---
+
 ## What you will do
 
 - **Target:** Forecast log(cases + 1) for **Rio de Janeiro** on a **six‑month horizon**, using 23 prescribed quantiles to summarise the predictive distribution.
