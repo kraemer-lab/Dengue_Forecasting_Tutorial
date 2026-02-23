@@ -15,7 +15,10 @@ Non-epidemiological datasets you may use for the Brazil tutorial (download from 
 - ccvi, gdp_pc, population, reanalysis_monthly, seasonal_forecast_monthly  
 - spa01, spa03, spa06, spa12 (Standardized Precipitation Index)  
 - spe01, spe03, spe06, spe12 (Standardized Precipitation-Evapotranspiration Index)  
-- surv_wmean, swvl1, urban, w_piped  
+
+**NOTE: These datasets are all available, but the example data processing code for the tutorial prepares a subset of variables from these files (listed below). For the tutorial and assignment you can feel free to limit your investigation to the below variables**
+
+'t2m', 'rh', 'tp', 'spe06', 'mn2t24_L1.0', 'mn2t24_L2.0', 'mn2t24_L3.0', 'mn2t24_L4.0', 'mn2t24_L5.0', 'mn2t24_L6.0', 'mx2t24_L1.0', 'mx2t24_L2.0', 'mx2t24_L3.0', 'mx2t24_L4.0', 'mx2t24_L5.0', 'mx2t24_L6.0', 'rh_L1.0', 'rh_L2.0', 'rh_L3.0', 'rh_L4.0', 'rh_L5.0', 'rh_L6.0', 't2m_L1.0', 't2m_L2.0', 't2m_L3.0', 't2m_L4.0', 't2m_L5.0', 't2m_L6.0', 'tp_L1.0', 'tp_L2.0', 'tp_L3.0', 'tp_L4.0', 'tp_L5.0', 'tp_L6.0',
 
 
 ## Datasets
@@ -329,27 +332,6 @@ If using this dataset, please cite:
 > Bill and Melinda Gates Foundation (INV-045237). WorldPop - School of
 > Geography and Environmental Science, University of Southampton.
 > DOI:10.5258/SOTON/WP00840
-
-### urban
-
-- *Dataset*: Fraction of urban areas
-- *Temporal resolution*: static
-- *Temporal extent*: static
-- *License*: CC-BY-4.0
-
-Variables: urban (unitless)
-
-*Dataset notes*: The source GeoTIFF file in WGS84 was converted to NetCDF with
-urban=1 and setting rural=0 (was 2 in the original data). Zonal statistics
-(averaging) was performed without resampling to population density due to
-dataset size, and also as urban/rural and population density would be
-correlated. Grid cells without information (NaN) were considered non-urban (0).
-
-If using this dataset, please cite:
-
-> Liu, Z., Huang, S., Fang, C. et al. Global urban and rural settlement dataset
-> from 2000 to 2020. Sci Data 11, 1359 (2024).
-> https://doi.org/10.1038/s41597-024-04195-y
 
 ### ccvi
 
