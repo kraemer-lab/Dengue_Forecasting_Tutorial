@@ -183,3 +183,8 @@ cython_debug/
 #  refer to https://docs.cursor.com/context/ignore-files
 .cursorignore
 .cursorindexingignore
+
+
+# MacOS hidden file
+.DS_Store
+**/.DS_Store
